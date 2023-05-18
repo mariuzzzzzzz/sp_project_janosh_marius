@@ -1,9 +1,11 @@
 <script>
-    var globalVariable = "empty";
+    var globalVariable = "00";
+    var teamLink = "";
 
     let selectedOption = {
-        option1: "",
-        option2: "",
+        option1: 0,
+        option2: 0,
+        option3: "",
     };
 
     function updateSelectedOption1(event) {
@@ -44,22 +46,40 @@
             y = 1;
         } else if (selectedOption.option2 === "hospitalisation") {
             y = 2;
-        }else if (selectedOption.option2 === "ICU") {
+        } else if (selectedOption.option2 === "ICU") {
             y = 3;
-        }else if (selectedOption.option2 === "deaths") {
+        } else if (selectedOption.option2 === "deaths") {
             y = 4;
         }
 
+        if(selectedOption.option3 ==="DST IPS"){
+            teamLink = "DST IPS"
+        }else if(
+            selectedOption.option3 ==="DST NF"
+        ){
+            teamLink = "DST NF"
+        }
+        else if(
+            selectedOption.option3 ==="DST OPS"
+        ){
+            teamLink = "DST OPS"
+        }
         console.log("x:", x, "y:", y);
         globalVariable = x.toString() + y.toString();
         console.log(globalVariable);
     }
+
 </script>
 
+
+
 <h1>Comparison Page</h1>
-<h3>!SELECT YOU VALUES!</h3>
-<select id="employeeData" on:change={updateSelectedOption1}>
-    <option value="">data employee</option>
+<h3>!SELECT YOUR VALUES!</h3>
+<div class="dropdown-container">
+  <div class="dropdown-wrapper">
+    <h5>Employee Data</h5>
+    <select id="employeeData" on:change={updateSelectedOption1} class="dropdown">
+        <option value="">data employee</option>
     <option value="overtime">overtime</option>
     <option value="GLAZ">GLAZ</option>
     <option value="COVID-Hours">Explicit COVID Workhours</option>
@@ -67,37 +87,50 @@
     <option value="SOLL">Soll</option>
     <option value="sollist">soll-ist</option>
     <option value="Ferien">Holidays</option>
-</select>
-
-<select id="covidData" on:change={updateSelectedOption2}>
-    <option value="">data covid</option>
+    </select>
+  </div>
+  <div class="dropdown-wrapper">
+    <h5>Covid Data</h5>
+    <select id="covidData" on:change={updateSelectedOption2} class="dropdown">
+        <option value="">data covid</option>
     <option value="cases">cases</option>
     <option value="hospitalisation">hospitalisation</option>
     <option value="ICU">ICU_Cases</option>
     <option value="deaths">Deaths</option>
-</select>
+    </select>
+  </div>
+  <div class="dropdown-wrapper">
+    <h5>Team Selection</h5>
+    <select id="Team" on:change={updateSelectedOption3} class="dropdown">
+        <option value="">Select Team</option>
+        <option value="DST IPS">ICU-Team</option>
+        <option value="DST NF">Emergency-Team</option>
+        <option value="DST OPS">Operation-Team</option>
+    </select>
+  </div>
+</div>
 
-<select id="Team" on:change={updateSelectedOption3}>
-    <option value="ICU">ICU-Team</option>
-    <option value="NF">Emergency-Team</option>
-    <option value="OPS">Operation-Team</option>
-</select>
-
-<button on:click={handleCommit} disabled={selectedOption.option1 == 0|| selectedOption.option2 == 0}>
+<div class = "button-container">
+    <button
+    on:click={handleCommit}
+    disabled={selectedOption.option1 == 0 || selectedOption.option2 == 0 || selectedOption.option3 == "" }
+    class = "button">
     show graph
 </button>
+</div>
 
-
-<div />
-
-<img src="/img/plot{globalVariable}.png" alt="plot" />
+<div class="image-container">
+    <img src="/img/{teamLink}/plot{globalVariable}.png" alt="plot" class="centered-image" />
+  </div>
+  
 
 <style>
     h1 {
-        padding-top: 50px;
+        padding-top: 20px;
         padding-bottom: 20px;
     }
     div {
         padding-top: 30px;
     }
+
 </style>

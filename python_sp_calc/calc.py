@@ -9,9 +9,10 @@ def graph(employee, covid):
     path = os.path.join(current_dir,f'../backend_sp_db/Database/project_SP.db')
     conn = sqlite3.connect(path)
    
+    teamFilter= ""
        # Read data from tables using pandas
     rows1 = pd.read_sql_query("SELECT * FROM Covid_Data", conn)
-    rows2 = pd.read_sql_query("SELECT * FROM [SP_Project_Sums_DST IPS]", conn)
+    rows2 = pd.read_sql_query(f"SELECT * FROM [SP_Project_Sums{teamFilter}]", conn)
 
      # Close the database connection
     conn.close()
@@ -43,7 +44,7 @@ def graph(employee, covid):
 
     plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
     plt.xticks(range(0, len(dates), 3)) 
-    imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/plot{employee}{covid}.png')
+    imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/{teamFilter}/plot{employee}{covid}.png')
     plt.savefig(imgPath)
     plt.close()
 #create all graph versions
