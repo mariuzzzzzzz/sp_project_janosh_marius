@@ -40,6 +40,10 @@
             y = 1;
         } else if (selectedOption.option2 === "hospitalisation") {
             y = 2;
+        }else if (selectedOption.option2 === "ICU") {
+            y = 3;
+        }else if (selectedOption.option2 === "deaths") {
+            y = 4;
         }
 
         console.log("x:", x, "y:", y);
@@ -65,6 +69,8 @@
     <option value="">data covid</option>
     <option value="cases">cases</option>
     <option value="hospitalisation">hospitalisation</option>
+    <option value="ICU">ICU_Cases</option>
+    <option value="deaths">Deaths</option>
 </select>
 
 <button on:click={handleCommit} disabled={selectedOption.option1 == 0|| selectedOption.option2 == 0}>
