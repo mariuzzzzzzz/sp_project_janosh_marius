@@ -7,4 +7,8 @@
 <img src="/img/placeholder.png" alt="placeholder" />
 
 <style>
+    h1 {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
 </style>
