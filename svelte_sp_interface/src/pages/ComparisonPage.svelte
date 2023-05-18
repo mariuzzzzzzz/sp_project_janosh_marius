@@ -9,6 +9,10 @@
     function handleChange2(event) {
         selectedOption2 = event.target.value;
     }
+    function handleCommit() {
+    // Perform commit action here
+    console.log("Commit button clicked!");
+  }
 </script>
 
 <h1>Comparison Page</h1>
@@ -24,6 +28,8 @@
     <option value="cases">cases</option>
     <option value="hospitalisation">hospitalisation</option>
 </select>
+
+<button on:click={handleCommit}>Commit</button>
 
 <style>
     h1 {
