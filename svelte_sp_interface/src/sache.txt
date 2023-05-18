@@ -26,3 +26,11 @@
 		</li>
 	</ul>
 </nav>
+
+
+
+<nav>
+		<a href="#/">Home</a>
+		<a href="#/DataPage">Data</a>
+		<a href="#/ComparisonPage">Comparison</a>
+	</nav>
