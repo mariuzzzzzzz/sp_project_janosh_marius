@@ -15,6 +15,10 @@
         selectedOption.option2 = event.target.value;
         console.log(selectedOption);
     }
+    function updateSelectedOption3(event) {
+        selectedOption.option3 = event.target.value;
+        console.log(selectedOption);
+    }
 
     function handleCommit() {
         let x = 0;
@@ -71,6 +75,12 @@
     <option value="hospitalisation">hospitalisation</option>
     <option value="ICU">ICU_Cases</option>
     <option value="deaths">Deaths</option>
+</select>
+
+<select id="Team" on:change={updateSelectedOption3}>
+    <option value="ICU">ICU-Team</option>
+    <option value="NF">Emergency-Team</option>
+    <option value="OPS">Operation-Team</option>
 </select>
 
 <button on:click={handleCommit} disabled={selectedOption.option1 == 0|| selectedOption.option2 == 0}>

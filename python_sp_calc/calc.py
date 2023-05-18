@@ -11,7 +11,7 @@ def graph(employee, covid):
    
        # Read data from tables using pandas
     rows1 = pd.read_sql_query("SELECT * FROM Covid_Data", conn)
-    rows2 = pd.read_sql_query("SELECT * FROM SP_Project_Sums", conn)
+    rows2 = pd.read_sql_query("SELECT * FROM [SP_Project_Sums_DST IPS]", conn)
 
      # Close the database connection
     conn.close()
@@ -26,6 +26,7 @@ def graph(employee, covid):
 
     # Create a line graph using Matplotlib with dual y-axes
     fig, ax1 = plt.subplots()
+    
 
     ax1.plot(dates, employee_list, 'bo-', label=employee_label)
     ax1.set_xlabel('Time')
@@ -36,7 +37,7 @@ def graph(employee, covid):
     ax2.set_ylabel(covid_label, color='r')
 
     # Set title and legends
-    plt.title('COVID and Employees Over Time')
+    plt.title('COVID in Kanton Zürich and Employees Stadtspital Zürich ICU - Over Time')
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
 
@@ -44,7 +45,7 @@ def graph(employee, covid):
     plt.xticks(range(0, len(dates), 3)) 
     imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/plot{employee}{covid}.png')
     plt.savefig(imgPath)
-
+    plt.close()
 #create all graph versions
 graph(1,1)
 graph(2,1)
