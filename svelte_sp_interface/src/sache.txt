@@ -1,0 +1,28 @@
+<nav>
+	<ul>
+		<li>
+			<a href="/#">Home</a>
+		</li>
+		<li>
+			<a href="pages/DataPage.svelte">Data</a>
+		</li>
+		<li>
+			<a
+				href="/pages/DataPage.svelte"
+				class:selected={activePage === "data"}
+				on:click={() => navigate("data")}
+			>
+				Data
+			</a>
+		</li>
+		<li>
+			<a
+				href="#"
+				class:selected={activePage === "comparison"}
+				on:click={() => navigate("comparison")}
+			>
+				Comparison
+			</a>
+		</li>
+	</ul>
+</nav>
