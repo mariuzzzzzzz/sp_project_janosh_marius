@@ -34,3 +34,48 @@
 		<a href="#/DataPage">Data</a>
 		<a href="#/ComparisonPage">Comparison</a>
 	</nav>
+
+
+<script>
+    import { onMount } from "svelte";
+    import { fetchData } from "../utils/db";
+
+    let rows = [];
+
+    onMount(async () => {
+      console.log('Fetching data...');
+      rows = await fetchData();
+      console.log('Fetched data:', rows); // Check if the rows are populated
+    });
+</script>
+
+<h1>Data Page</h1>
+
+<div>{JSON.stringify(rows)}</div>
+<ul>
+    {#each rows as row}
+        <li>{JSON.stringify(row)}</li>
+    {/each}
+</ul>
+
+<img src="/img/placeholder.png" alt="placeholder" />
+<img src="/img/placeholder.png" alt="placeholder" />
+
+<style>
+</style>
+
+
+import * as sqlite from "sqlite";
+
+export const fetchData = async () => {
+  try {
+    const db = await sqlite.open('/Users/mariusaffolter/Documents/GitHub/sp_project_janosh_marius/backend_sp_db/Database/project_SP.db');
+    console.log('Database opened');
+    const result = await db.all('SELECT * FROM SP_Project_Sums');
+    await db.close();
+    return result;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
