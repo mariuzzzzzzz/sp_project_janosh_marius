@@ -14,13 +14,15 @@ def graph(employee, covid):
     rows2 = cursor.fetchall()
     
     # Store the values in a list
-
+    employee_list = []
+    covid_list = []
+    
     # Close the database connection
     conn.close()
 
     # Extract x and y values from the data
-    x_values = [row[employee] for row in data_list]  # Assuming x values are in the first column
-    y_values = [row[covid] for row in data_list]  # Assuming y values are in the second column
+    x_values = [row[employee] for row in employee_list]  # Assuming x values are in the first column
+    y_values = [row[covid] for row in covid_list]  # Assuming y values are in the second column
 
     # Create a line graph using Matplotlib
     plt.plot(x_values, y_values)

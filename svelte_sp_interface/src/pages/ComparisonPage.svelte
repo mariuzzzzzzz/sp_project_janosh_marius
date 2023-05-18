@@ -10,9 +10,26 @@
         selectedOption2 = event.target.value;
     }
     function handleCommit() {
-    // Perform commit action here
-    console.log("Commit button clicked!");
-  }
+        let x = 0;
+        let y = 0;
+
+        if (selectedOption1 == "overtime" && selectedOption2 == "cases") {
+            let x = 1;
+            let y = 1;
+        } else if (
+            selectedOption1 == "overtime" &&
+            selectedOption2 == "hospitalisation"
+        ) {
+            let x = 1;
+            let y = 2;
+        } else if (selectedOption1 == "sollist" && selectedOption2 == "cases") {
+            let x = 6;
+            let y = 1;
+        } else {
+            let x = 6;
+            let y = 2;
+        }
+    }
 </script>
 
 <h1>Comparison Page</h1>
@@ -33,7 +50,7 @@
 
 <style>
     h1 {
-    padding-top: 50px;
-    padding-bottom: 20px;
-  }
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
 </style>
