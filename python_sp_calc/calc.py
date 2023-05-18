@@ -1,13 +1,15 @@
 import sqlite3
 import matplotlib.pyplot as plt
 import pandas as pd
+import os
 
 def graph(employee, covid):
     # Connect to the SQLite database
-    conn = sqlite3.connect('C:/Users/spunk/OneDrive/Janosh/ZHAW/Module/Semester 4/SCI/Challenge/SP Project/sp_project_janosh_marius/backend_sp_db/Database/project_SP.db')
-
-
-    # Read data from tables using pandas
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(current_dir,f'../backend_sp_db/Database/project_SP.db')
+    conn = sqlite3.connect(path)
+   
+       # Read data from tables using pandas
     rows1 = pd.read_sql_query("SELECT * FROM Covid_Data", conn)
     rows2 = pd.read_sql_query("SELECT * FROM SP_Project_Sums", conn)
 
@@ -40,7 +42,8 @@ def graph(employee, covid):
 
     plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
     plt.xticks(range(0, len(dates), 3)) 
-    plt.savefig(f'C:/Users/spunk/OneDrive/Janosh/ZHAW/Module/Semester 4/SCI/Challenge/SP Project/sp_project_janosh_marius/svelte_sp_interface/public/img/plot{employee}{covid}.png')
+    imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/plot{employee}{covid}.png')
+    plt.savefig(imgPath)
 
 
 graph(1,1)
