@@ -67,7 +67,10 @@
     <option value="hospitalisation">hospitalisation</option>
 </select>
 
-<button on:click={handleCommit}>show graph</button>
+<button on:click={handleCommit} disabled={selectedOption.option1 == 0|| selectedOption.option2 == 0}>
+    show graph
+</button>
+
 
 <div />
 

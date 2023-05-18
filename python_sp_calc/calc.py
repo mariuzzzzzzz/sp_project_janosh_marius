@@ -45,7 +45,7 @@ def graph(employee, covid):
     imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/plot{employee}{covid}.png')
     plt.savefig(imgPath)
 
-
+#create all graph versions
 graph(1,1)
 graph(2,1)
 graph(3,1)
