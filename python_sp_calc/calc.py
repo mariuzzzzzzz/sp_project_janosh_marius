@@ -35,6 +35,10 @@ def graph(employee, covid):
     ax2.legend(loc='upper right')
 
     plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
-    plt.show()
+    plt.xticks(range(0, len(dates), 3)) 
+    plt.savefig(f'/Users/mariusaffolter/Documents/GitHub/sp_project_janosh_marius/svelte_sp_interface/public/img/plot{employee}{covid}.png')
 
+graph(1,1)
+graph(1,2)
 graph(6,1)
+graph(6,2)
