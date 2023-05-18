@@ -1,56 +1,66 @@
 <script>
-    let selectedOption1 = "";
-    let selectedOption2 = "";
-
-    // Handle the change event when an option is selected
-    function handleChange1(event) {
-        selectedOption1 = event.target.value;
+    let selectedOption = {
+      option1: "",
+      option2: "",
+    };
+  
+    function updateSelectedOption1() {
+      let selectElement = document.getElementById("employeeData");
+      selectedOption.option1 = selectElement.options[selectElement.selectedIndex].value;
+      console.log(selectedOption);
     }
-    function handleChange2(event) {
-        selectedOption2 = event.target.value;
+  
+    function updateSelectedOption2() {
+      let selectElement = document.getElementById("covidData");
+      selectedOption.option2 = selectElement.options[selectElement.selectedIndex].value;
+      console.log(selectedOption);
     }
+  
     function handleCommit() {
-        let x = 0;
-        let y = 0;
+      let x = 0;
+      let y = 0;
+  
+      if (selectedOption.option1 === "overtime" && selectedOption.option2 === "cases") {
+        x = 1;
+        y = 1;
+      } else if (selectedOption.option1 === "overtime" && selectedOption.option2 === "hospitalisation") {
+        x = 1;
+        y = 2;
+      } else if (selectedOption.option1 === "sollist" && selectedOption.option2 === "cases") {
+        x = 6;
+        y = 1;
+      } else {
+        x = 6;
+        y = 2;
+      }
 
-        if (selectedOption1 == "overtime" && selectedOption2 == "cases") {
-            let x = 1;
-            let y = 1;
-        } else if (
-            selectedOption1 == "overtime" &&
-            selectedOption2 == "hospitalisation"
-        ) {
-            let x = 1;
-            let y = 2;
-        } else if (selectedOption1 == "sollist" && selectedOption2 == "cases") {
-            let x = 6;
-            let y = 1;
-        } else {
-            let x = 6;
-            let y = 2;
-        }
+      console.log("x:", x, "y:", y);
     }
-</script>
-
-<h1>Comparison Page</h1>
-
-<select bind:value={selectedOption1} on:change={handleChange1}>
+  </script>
+  
+  <h1>Comparison Page</h1>
+  
+  <select id="employeeData" on:change={updateSelectedOption1}>
     <option value="">data employee</option>
     <option value="overtime">overtime</option>
     <option value="sollist">soll-ist</option>
-</select>
-
-<select bind:value={selectedOption2} on:change={handleChange2}>
+  </select>
+  
+  <select id="covidData" on:change={updateSelectedOption2}>
     <option value="">data covid</option>
     <option value="cases">cases</option>
     <option value="hospitalisation">hospitalisation</option>
-</select>
-
-<button on:click={handleCommit}>Commit</button>
-
-<style>
+  </select>
+  
+  <button on:click={handleCommit}>Commit</button>
+  
+  {selectedOption.option1}
+  {selectedOption.option2}
+  
+  <style>
     h1 {
-        padding-top: 50px;
-        padding-bottom: 20px;
+      padding-top: 50px;
+      padding-bottom: 20px;
     }
-</style>
+  </style>
+  
