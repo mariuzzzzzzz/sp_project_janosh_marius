@@ -41,6 +41,8 @@
     background-color: black;
     color: white;
     padding: 5px 10px;
-
-  }
+	}
+	:global(body) {
+		background-color: rgba(68, 149, 255, 0.239);
+	}
 </style>
