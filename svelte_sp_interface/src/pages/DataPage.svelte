@@ -3,8 +3,10 @@
 
 <h1>Data Page</h1>
 
-<img src="/img/plotempty.png" alt="placeholder" />
-<img src="/img/plotempty.png" alt="placeholder" />
+<div class="image-container">
+  <img src="/img/plotempty.png" alt="placeholder" />
+  <img src="/img/plotempty.png" alt="placeholder" />
+</div>
 
 <style>
     h1 {
