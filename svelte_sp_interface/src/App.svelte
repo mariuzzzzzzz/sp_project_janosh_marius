@@ -7,48 +7,26 @@
 </script>
 
 <div id="app">
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<span class="navbar-brand" href="/">COVIDxEMPLOYEES</span>
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbarNav"
-				aria-controls="navbarNav"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-			>
-				<span class="navbar-toggler-icon" />
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<button
-							class="btn btn-success"
-							type="button"
-							onclick="location.href='#/'">Home</button
-						>
-					</li>
-					<li class="nav-item">
-						<button
-							class="btn btn-danger"
-							type="button"
-							onclick="location.href='#/DataPage'">Data</button
-						>
-					</li>
-					<li class="nav-item">
-						<button
-							class="btn btn-warning"
-							type="button"
-							onclick="location.href='#/ComparisonPage'"
-							>Comparison</button
-						>
-					</li>
-				</ul>
-			</div>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-center">
+		<div class="container-fluid d-flex flex-column align-items-center">
+		  <a class="navbar-brand mb-3" href="/">COVIDxEMPLOYEES</a>
+		  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/'">Home</button>
+			  </li>
+			  <li class="nav-item">
+				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/DataPage'">Data</button>
+			  </li>
+			  <li class="nav-item">
+				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/ComparisonPage'">Comparison</button>
+			  </li>
+			</ul>
+		  </div>
 		</div>
-	</nav>
+	  </nav>
+	  
+	  
 
 	<Router {routes} />
 </div>
@@ -56,13 +34,13 @@
 <style>
 	.navbar-nav .nav-item {
 		margin-right: 10px;
+		margin-left: 10px;
 	}
 	.navbar-brand {
     display: inline-block;
     background-color: black;
     color: white;
     padding: 5px 10px;
-    border-radius: 70%;
-    position: relative;
+
   }
 </style>

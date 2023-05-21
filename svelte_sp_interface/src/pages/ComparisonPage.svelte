@@ -128,6 +128,10 @@
     h1 {
         padding-top: 20px;
         padding-bottom: 20px;
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
     }
     div {
         padding-top: 30px;
