@@ -16,9 +16,6 @@
 				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/'">Home</button>
 			  </li>
 			  <li class="nav-item">
-				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/DataPage'">Data</button>
-			  </li>
-			  <li class="nav-item">
 				<button class="btn btn-sm btn-outline-primary" type="button" onclick="location.href='#/ComparisonPage'">Comparison</button>
 			  </li>
 			</ul>

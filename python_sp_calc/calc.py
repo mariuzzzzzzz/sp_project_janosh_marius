@@ -4,13 +4,13 @@ import pandas as pd
 import os
 
 def graph(employee, covid):
-    # Connect to the SQLite database
+    # Connect to the database
     current_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(current_dir,f'../backend_sp_db/Database/project_SP.db')
     conn = sqlite3.connect(path)
    
     teamFilter= ""
-       # Read data from tables using pandas
+    # Read data from tables
     rows1 = pd.read_sql_query("SELECT * FROM Covid_Data", conn)
     rows2 = pd.read_sql_query(f"SELECT * FROM [SP_Project_Sums{teamFilter}]", conn)
 
@@ -18,14 +18,14 @@ def graph(employee, covid):
     conn.close()
 
     # Store the values in separate lists
-    dates = rows1['date']  # Assuming the date column is named 'date' in the Covid_Data table
+    dates = rows1['date']
     employee_list = rows2.iloc[:, employee]
     covid_list = rows1.iloc[:, covid]
 
     employee_label = rows2.columns[employee]
     covid_label = rows1.columns[covid]
 
-    # Create a line graph using Matplotlib with dual y-axes
+    # Create a line graph
     fig, ax1 = plt.subplots()
     
 
@@ -33,7 +33,7 @@ def graph(employee, covid):
     ax1.set_xlabel('Time')
     ax1.set_ylabel(employee_label, color='b')
 
-    ax2 = ax1.twinx()  # Create a secondary y-axis
+    ax2 = ax1.twinx()
     ax2.plot(dates, covid_list, 'ro-', label=covid_label)
     ax2.set_ylabel(covid_label, color='r')
 
@@ -42,7 +42,7 @@ def graph(employee, covid):
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
 
-    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+    plt.xticks(rotation=45)
     plt.xticks(range(0, len(dates), 3)) 
     imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/{teamFilter}/plot{employee}{covid}.png')
     plt.savefig(imgPath)
