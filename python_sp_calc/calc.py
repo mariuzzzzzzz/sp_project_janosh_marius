@@ -4,20 +4,19 @@ import pandas as pd
 import os
 
 def graph(employee, covid):
-    # Connect to the database
+
     current_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(current_dir,f'../backend_sp_db/Database/project_SP.db')
     conn = sqlite3.connect(path)
    
+   #set Filter depending on selected team
     teamFilter= ""
-    # Read data from tables
+
     rows1 = pd.read_sql_query("SELECT * FROM Covid_Data", conn)
     rows2 = pd.read_sql_query(f"SELECT * FROM [SP_Project_Sums{teamFilter}]", conn)
 
-     # Close the database connection
     conn.close()
 
-    # Store the values in separate lists
     dates = rows1['date']
     employee_list = rows2.iloc[:, employee]
     covid_list = rows1.iloc[:, covid]
@@ -37,7 +36,6 @@ def graph(employee, covid):
     ax2.plot(dates, covid_list, 'ro-', label=covid_label)
     ax2.set_ylabel(covid_label, color='r')
 
-    # Set title and legends
     plt.title('COVID in Kanton Zürich and Employees Stadtspital Zürich ICU - Over Time')
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
@@ -47,7 +45,9 @@ def graph(employee, covid):
     imgPath = os.path.join(current_dir, f'../svelte_sp_interface/public/img/{teamFilter}/plot{employee}{covid}.png')
     plt.savefig(imgPath)
     plt.close()
-#create all graph versions
+
+
+#create all graph versions (per Team)
 graph(1,1)
 graph(2,1)
 graph(3,1)
